@@ -22,3 +22,4 @@ console.log(temp1*temp2)
 console.log(temp1/temp2)
 //-,*,/는 숫자형태의 문자열이 들어와도 알아서 변환해서 계산한 값을 number타입으로 출력해줌.
 console.log(temp1==temp2)//==는 값이 같은지 참 거짓으로 출력함(boolean)
+var temp3 = 10;
