@@ -10,11 +10,19 @@
   <h1 id="heading">자바스크립트</h1>
   <p id="text">위 텍스트를 클릭해 보세요.</p>
   <script>
+    //global 영역
     let heading = document.querySelector('#heading')
     heading.onclick = function(){
+      //local
+      let heading = 'local';
+      console.log(heading);
       heading.style.color='red';
     }
+    heading='global'
+    console.log(heading)
   </script>
-  <script src="basic2.js"></script>
+  <script src="basic4.js"></script>
+  <script src="operator.js"></script>
+  <script src="if.js"></script>
 </body>
 </html>
