@@ -1,29 +1,28 @@
 <!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>자바스크립트 수업</title>
-</head>
-<body>
-  <h3>자바스크립트 변수.</h3>
-  <h1 id="heading">자바스크립트</h1>
-  <p id="text">위 텍스트를 클릭해 보세요.</p>
-  <script>
-    //global 영역
-    let heading = document.querySelector('#heading')
-    heading.onclick = function(){
-      //local
-      let heading = 'local';
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>자바스크립트 수업</title>
+  </head>
+  <body>
+    <h3>자바스크립트 변수.</h3>
+    <h1 id="heading">자바스크립트</h1>
+    <p id="text">위 텍스트를 클릭해 보세요.</p>
+    <script>
+      //global 영역
+      let heading = document.querySelector("#heading");
+      heading.onclick = function () {
+        //local
+        let heading = "local";
+        console.log(heading);
+        heading.style.color = "red";
+      };
+      heading = "global";
       console.log(heading);
-      heading.style.color='red';
-    }
-    heading='global'
-    console.log(heading)
-  </script>
-  <script src="basic4.js"></script>
-  <script src="operator.js"></script>
-  <script src="if.js"></script>
-  <script src="todo.js"></script>
-</body>
+    </script>
+    <script src="basic4.js"></script>
+    <script src="operator.js"></script>
+    <script src="if.js"></script>
+  </body>
 </html>
