@@ -72,4 +72,4 @@ function drawCalendar(yyyy, mm) {
   cal += `</tr></tbody></table>`;
   document.writeln(cal);
 }
-drawCalendar(prompt("몇년?"), prompt("몇월?"));
+drawCalendar( 2024, 11)
