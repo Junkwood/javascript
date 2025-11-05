@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>학생 정보 등록</title>
+    <style>
+      /* 전체 페이지 스타일 */
+      body {
+        font-family: "Pretendard", "Noto Sans KR", sans-serif;
+        background-color: #f7f9fb;
+        margin: 0;
+        padding: 30px;
+        color: #333;
+      }
+
+      h3 {
+        text-align: center;
+        color: #2c3e50;
+        font-size: 1.8em;
+        margin-bottom: 20px;
+      }
+
+      /* 폼 스타일 */
+      form {
+        display: flex;
+        justify-content: center;
+        gap: 10px;
+        margin-bottom: 25px;
+      }
+
+      form input {
+        padding: 10px 15px;
+        border: 1px solid #ccc;
+        border-radius: 6px;
+        font-size: 1em;
+        width: 150px;
+        transition: 0.3s;
+      }
+
+      form input:focus {
+        border-color: #3498db;
+        outline: none;
+        box-shadow: 0 0 5px rgba(52, 152, 219, 0.5);
+      }
+
+      form button {
+        background-color: #3498db;
+        color: white;
+        border: none;
+        border-radius: 6px;
+        padding: 10px 20px;
+        font-size: 1em;
+        cursor: pointer;
+        transition: 0.3s;
+      }
+
+      form button:hover {
+        background-color: #2980b9;
+      }
+
+      /* 테이블 스타일 */
+      #list {
+        display: flex;
+        justify-content: center;
+      }
+
+      table {
+        border-collapse: collapse;
+        width: 80%;
+        max-width: 700px;
+        background-color: white;
+        box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+        border-radius: 8px;
+        overflow: hidden;
+      }
+
+      thead {
+        background-color: #3498db;
+        color: white;
+      }
+
+      th,
+      td {
+        text-align: center;
+        padding: 12px 15px;
+      }
+
+      tbody tr:nth-child(even) {
+        background-color: #f2f6fa;
+      }
+
+      tbody tr:hover {
+        background-color: #eaf4fd;
+        transition: 0.2s;
+      }
+      table button {
+        background-color: red;
+        color: white;
+        padding: 10px;
+        border: 1px solid red;
+        border-radius: 5px;
+        cursor: pointer;
+      }
+    </style>
+  </head>
+  <body>
+    <h3>학생정보등록</h3>
+
+    <form id="addForm" action="dom.html">
+      <input type="text" placeholder="학생번호" required />
+      <input type="text" placeholder="이름" required />
+      <input type="number" placeholder="점수" required />
+      <button type="submit">등록</button>
+    </form>
+
+    <div id="list">
+      <table>
+        <thead>
+          <tr>
+            <th>학생번호</th>
+            <th>이름</th>
+            <th>점수</th>
+            <th>삭제</th>
+          </tr>
+        </thead>
+        <tbody id="studentList"></tbody>
+      </table>
+    </div>
+    <script src="js/addStudent.js"></script>
+  </body>
+</html>

@@ -1,0 +1,72 @@
+input[name="yyyy"],
+input[name="mm"] {
+  padding: 8px 15px;
+  background-color: aliceblue;
+  font-size: larger;
+}
+
+table {
+  border-collapse: collapse;
+  width: 60%;
+  margin: 20px auto;
+  font-family: "Segoe UI", Arial, sans-serif;
+  text-align: center;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+  border-radius: 10px;
+  overflow: hidden;
+}
+
+caption {
+  caption-side: top;
+  font-size: 1.5em;
+  font-weight: bold;
+  margin-bottom: 10px;
+  color: #333;
+}
+
+th,
+td {
+  border: 1px solid #ddd;
+  padding: 12px;
+  transition: background 0.2s;
+}
+
+thead {
+  background-color: #2c3e50;
+  color: white;
+}
+
+tbody td:hover {
+  background-color: #f1f8ff;
+}
+
+/* 일요일 빨강, 토요일 파랑 */
+th.sunday,
+td.sunday {
+  color: #e74c3c;
+}
+
+th.saturday,
+td.saturday {
+  color: #2980b9;
+}
+
+/* 빈칸 정리 */
+td:empty {
+  background-color: #f9f9f9;
+}
+
+/* 테두리 둥글게 */
+table tr:first-child th:first-child {
+  border-top-left-radius: 10px;
+}
+
+table tr:first-child th:last-child {
+  border-top-right-radius: 10px;
+}
+
+/* 주말 강조 배경 */
+tbody tr td.sunday,
+tbody tr td.saturday {
+  background-color: #fafafa;
+}
