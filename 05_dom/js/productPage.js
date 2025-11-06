@@ -98,8 +98,8 @@ function showPagingList(totalCount = 50) {
 
   // 시작, 마지막 페이지.
 
-  endPage = Math.ceil(page / 10) * 10;
-  startPage = endPage - 9;
+  endPage = Math.ceil(page / 5) * 5;
+  startPage = endPage - 4;
   let realEnd = Math.ceil(totalCount / 5);
 
   if (endPage > realEnd) {
