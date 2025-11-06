@@ -1,0 +1,226 @@
+<!DOCTYPE html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>리퀴드 글래스 로그인</title>
+    <style>
+      @import url("https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap");
+
+      :root {
+        --mint-light: #a8e6cf;
+        --mint-pale: #dcedc1;
+        --mint-green: #81c784;
+        --mint-deep: #66bb6a;
+      }
+
+      * {
+        box-sizing: border-box; /* input 길이 일관성 핵심 */
+      }
+
+      body {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        min-height: 100vh;
+        margin: 0;
+        background: linear-gradient(
+          135deg,
+          var(--mint-light),
+          var(--mint-pale)
+        );
+        font-family: "Poppins", sans-serif;
+        overflow: hidden;
+      }
+
+      .bg-light {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 200%;
+        height: 200%;
+        background: radial-gradient(
+          circle at var(--x, 50%) var(--y, 50%),
+          rgba(255, 255, 255, 0.3),
+          transparent 40%
+        );
+        transition: background-position 0.1s ease;
+        z-index: 0;
+      }
+
+      .login-container {
+        position: relative;
+        z-index: 1;
+        background: rgba(255, 255, 255, 0.18);
+        border-radius: 18px;
+        border: 1px solid rgba(255, 255, 255, 0.35);
+        backdrop-filter: blur(22px) saturate(160%);
+        -webkit-backdrop-filter: blur(22px) saturate(160%);
+        box-shadow: 0 10px 40px rgba(0, 0, 0, 0.15),
+          inset 0 1px 1px rgba(255, 255, 255, 0.5);
+        padding: 45px 35px;
+        width: 360px; /* 카드 폭 약간 확대 */
+        text-align: center;
+        animation: fadeIn 1s ease;
+      }
+
+      @keyframes fadeIn {
+        from {
+          opacity: 0;
+          transform: translateY(20px);
+        }
+        to {
+          opacity: 1;
+          transform: translateY(0);
+        }
+      }
+
+      .login-container h2 {
+        margin-bottom: 25px;
+        color: #1b5e20;
+        font-weight: 600;
+      }
+
+      form {
+        display: flex;
+        flex-direction: column;
+        gap: 18px;
+      }
+
+      .input-group {
+        text-align: left;
+      }
+
+      .input-group label {
+        display: block;
+        margin-bottom: 6px;
+        font-weight: 500;
+        color: #2f4f4f;
+        font-size: 14px;
+      }
+
+      input[type="text"],
+      input[type="password"] {
+        display: block;
+        width: 100%; /* 폼 전체 너비 맞춤 */
+        padding: 12px 14px;
+        border: 1px solid rgba(255, 255, 255, 0.5);
+        border-radius: 10px;
+        background: rgba(255, 255, 255, 0.25);
+        font-size: 15px;
+        color: #1b5e20;
+        transition: all 0.3s ease;
+        outline: none;
+      }
+
+      input:focus {
+        border-color: rgba(129, 199, 132, 0.8);
+        box-shadow: 0 0 8px rgba(129, 199, 132, 0.6);
+        background: rgba(255, 255, 255, 0.4);
+      }
+
+      button[type="submit"] {
+        display: block;
+        width: 100%; /* 버튼도 input과 동일한 폭 */
+        background: linear-gradient(
+          135deg,
+          var(--mint-green),
+          var(--mint-deep)
+        );
+        color: white;
+        padding: 12px;
+        border: none;
+        border-radius: 10px;
+        cursor: pointer;
+        font-size: 17px;
+        font-weight: 600;
+        transition: all 0.3s ease;
+        margin-top: 5px;
+        box-shadow: 0 4px 10px rgba(102, 187, 106, 0.4);
+        position: relative;
+        overflow: hidden;
+      }
+
+      button[type="submit"]:hover {
+        transform: translateY(-2px);
+        box-shadow: 0 6px 18px rgba(102, 187, 106, 0.6);
+      }
+
+      .extra-links {
+        margin-top: 20px;
+        font-size: 14px;
+        color: rgba(0, 0, 0, 0.7);
+      }
+
+      .extra-links a {
+        color: #2e7d32;
+        text-decoration: none;
+        margin: 0 5px;
+        transition: color 0.2s ease;
+      }
+
+      .extra-links a:hover {
+        color: #1b5e20;
+      }
+
+      /* 다크모드 */
+      @media (prefers-color-scheme: dark) {
+        body {
+          background: linear-gradient(135deg, #263238, #37474f);
+        }
+        .login-container {
+          background: rgba(255, 255, 255, 0.08);
+          color: #fff;
+        }
+        input,
+        label {
+          color: #e0f2f1;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <div class="bg-light"></div>
+
+    <div class="login-container">
+      <h2>로그인</h2>
+      <form id="loginForm" action="">
+        <div class="input-group">
+          <label for="userId">아이디</label>
+          <input
+            type="text"
+            id="userId"
+            name="userId"
+            placeholder="아이디를 입력하세요"
+          />
+        </div>
+        <div class="input-group">
+          <label for="userPw">비밀번호</label>
+          <input
+            type="password"
+            id="userPw"
+            name="userPw"
+            placeholder="비밀번호를 입력하세요"
+          />
+        </div>
+        <button id="loginButton" type="submit">로그인</button>
+      </form>
+      <div class="extra-links">
+        <a href="#">비밀번호 찾기</a> |
+        <a href="#">회원가입</a>
+      </div>
+    </div>
+
+    <script>
+      // 빛 반사 인터랙션
+      const bgLight = document.querySelector(".bg-light");
+      document.addEventListener("mousemove", (e) => {
+        const x = (e.clientX / window.innerWidth) * 100;
+        const y = (e.clientY / window.innerHeight) * 100;
+        bgLight.style.setProperty("--x", `${x}%`);
+        bgLight.style.setProperty("--y", `${y}%`);
+      });
+    </script>
+    <script src="js/login.js"></script>
+  </body>
+</html>
