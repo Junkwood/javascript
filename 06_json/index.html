@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <link
+      rel="stylesheet"
+      href="//cdn.datatables.net/2.3.4/css/dataTables.dataTables.min.css"
+    />
+    <script src="https://code.jquery.com/jquery-3.7.1.js"></script>
+    <script src="https://cdn.datatables.net/2.3.4/js/dataTables.js"></script>
+  </head>
+  <body>
+    <!-- <button onclick="postRequest()">Post요청</button> -->
+    <table id="example" class="display" width="100%"></table>
+    <script>
+      let url = `https://api.odcloud.kr/api/15077586/v1/centers?page=1&perPage=300&serviceKey=s9yJh8S9jfsEBDbnkedyTAz%2BWaP%2F2WTvWloBP8YgAPTSJxc3t4ieqd8xf1MifgPwChNTgM47j6Q%2F2UHsfbBvcQ%3D%3D
+`;
+
+      let result = fetch(url) //반환값이 promise타입의 객체임.
+        .then(function (resp) {
+          console.log(resp);
+          return resp.json(); // stream -> javascript 객체로 변환.
+          //마찬가지로 promise객체로 반환
+        }) //then객체에 실행할 함수를 정의함.(전달받는건 위의 promise객체)
+        .then(function (result) {
+          console.log(result.data);
+          const totalList = result.data; //[{},{},{},{}...{}] => [[],[],[],[]...[]]
+          const data = [];
+          for (let center of totalList) {
+            data.push([
+              center.id,
+              center.centerName,
+              center.phoneNumber,
+              center.address,
+              center.sido,
+            ]);
+          }
+          console.log(data);
+          new DataTable("#example", {
+            columns: [
+              { title: "센터ID" },
+              { title: "센터명" },
+              { title: "주소" },
+              { title: "전화번호" },
+              { title: "시도구분" },
+            ],
+            data: data,
+          });
+        });
+      function postRequest() {
+        const data = { id: "3", title: "data sample", author: "user01" };
+        //post요청.
+        fetch("http://localhost:3000/posts", {
+          method: "post",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify(data), //JSON.stringify로 json으로 변환해줌
+        })
+          .then(function (resp) {
+            return resp.json();
+          })
+          .then(function (result) {
+            console.log(result);
+          })
+          .catch(function (err) {
+            console.log(err);
+          });
+      }
+    </script>
+  </body>
+</html>

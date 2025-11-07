@@ -462,4 +462,13 @@ const products = [
     purchasePrice: 12500,
     rating: 4.5,
   },
+  {
+    productCode: "X010",
+    productName: "무선충전 송신 모듈",
+    category: "액세서리",
+    stockQty: 21,
+    supplier: "디지털파트",
+    purchasePrice: 6500,
+    rating: 4.0,
+  },
 ];

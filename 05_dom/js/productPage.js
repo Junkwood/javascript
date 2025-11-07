@@ -21,6 +21,10 @@ for (let category of categories) {
   select.appendChild(opt);
 }
 
+/*변수선언*/
+let page = 1; //페이지를 저장.
+let tempList = []; //페이징 건수.
+tempList = products;
 //상품 목록을 화면에 출력.
 
 let target = document.querySelector("tbody");
@@ -44,29 +48,30 @@ function showProductList(productAry = []) {
     target.appendChild(tr);
   }
 }
-
-showProductList(products);
+//다섯개씩 목록출력
+showProductList(tempList.slice(0, 5));
 
 //페이지 이벤트
 
 document.querySelector("div.pagination").addEventListener("click", (e) => {
-  let pagingProducts = [];
+  // let pagingProducts = [];
 
   if (e.target.nodeName == "A") {
-    page = e.target.innerText;
-    if (!Number(page)) {
-      return;
-    }
+    page = e.target.dataset.page; // data-page="2" dataset은 태그에 data-로 시작하는 속성을 의미.
+    console.log(page);
+    // if (page <= 0) {
+    //   return;
+    // }
     let start = 0,
       end = 0;
     start = (page - 1) * 5;
     end = page * 5;
 
-    for (let i = start; i < end; i++) {
-      pagingProducts.push(products[i]); //5개씩 배열에 담기
-    }
-    showPagingList();
-    showProductList(pagingProducts);
+    // for (let i = start; i < end; i++) {
+    //   pagingProducts.push(products[i]); //5개씩 배열에 담기
+    // }
+    showPagingList(tempList.length);
+    showProductList(tempList.slice(start, end));
   }
 });
 
@@ -81,12 +86,14 @@ categorySelect.addEventListener("change", (e) => {
       filterProduct.push(product);
     }
   }
-  showProductList(filterProduct);
+  tempList = filterProduct;
+  page = 1; //조회시에는 페이지를 1페이지가 먼저 보이게.
+  showProductList(tempList.slice(0, 5)); //상품목록
+  showPagingList(tempList.length); //페이징목록
 });
 
 //페이징 목록 생성함수
 
-let page = 1;
 let pagination = document.querySelector("div.pagination");
 
 function showPagingList(totalCount = 50) {
@@ -98,8 +105,9 @@ function showPagingList(totalCount = 50) {
 
   // 시작, 마지막 페이지.
 
-  endPage = Math.ceil(page / 5) * 5;
-  startPage = endPage - 4;
+  endPage = Math.ceil(page / 10) * 10;
+  startPage = endPage - 9;
+  //건수를 계산한 마지막 페이지
   let realEnd = Math.ceil(totalCount / 5);
 
   if (endPage > realEnd) {
@@ -123,6 +131,8 @@ function showPagingList(totalCount = 50) {
   tag.innerHTML = "&laquo";
   tag.href = "#";
   tag.className = "disabled";
+  //페이지 값을 담아놓도록 속성.
+  tag.setAttribute("data-page", startPage - 1);
   pagination.appendChild(tag);
 
   if (prev) {
@@ -135,7 +145,8 @@ function showPagingList(totalCount = 50) {
     let tag = document.createElement("a");
     tag.innerText = p;
     tag.href = "#";
-
+    //페이지 값을 담아놓도록 속성.
+    tag.setAttribute("data-page", p);
     //현재페이지 active 클래스 부여.
 
     if (p == page) {
@@ -150,6 +161,8 @@ function showPagingList(totalCount = 50) {
   tag.innerHTML = "&raquo";
   tag.href = "#";
   tag.className = "disabled";
+  //페이지 값을 담아놓도록 속성.
+  tag.setAttribute("data-page", endPage + 1);
   pagination.appendChild(tag);
 
   if (next) {
@@ -157,7 +170,7 @@ function showPagingList(totalCount = 50) {
   }
 }
 
-showPagingList();
+showPagingList(tempList.length);
 //조회버튼 이벤트
 // document.querySelector("div.search").addEventListener("change", (e) => {
 //   console.log(e.target.value);

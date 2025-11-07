@@ -3,7 +3,7 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>학생 정보 등록</title>
+    <title>student</title>
     <style>
       /* 전체 페이지 스타일 */
       body {
@@ -21,30 +21,7 @@
         margin-bottom: 20px;
       }
 
-      /* 폼 스타일 */
-      form {
-        display: flex;
-        justify-content: center;
-        gap: 10px;
-        margin-bottom: 25px;
-      }
-
-      form input {
-        padding: 10px 15px;
-        border: 1px solid #ccc;
-        border-radius: 6px;
-        font-size: 1em;
-        width: 150px;
-        transition: 0.3s;
-      }
-
-      form input:focus {
-        border-color: #3498db;
-        outline: none;
-        box-shadow: 0 0 5px rgba(52, 152, 219, 0.5);
-      }
-
-      form button {
+      a {
         background-color: #3498db;
         color: white;
         border: none;
@@ -55,7 +32,7 @@
         transition: 0.3s;
       }
 
-      form button:hover {
+      a:hover {
         background-color: #2980b9;
       }
 
@@ -105,17 +82,9 @@
     </style>
   </head>
   <body>
-    <h3>학생정보등록</h3>
-
-    <form id="addForm" action="dom.html">
-      <input type="text" placeholder="학생번호" required />
-      <input type="text" placeholder="이름" required />
-      <input type="number" placeholder="점수" required />
-      <input type="phone" placeholder="전화번호" required />
-      <input type="email" placeholder="이메일" required />
-      <button type="submit">등록</button>
-    </form>
-
+    <h3>학생정보</h3>
+    <!-- 학번,이름,점수,연락처,이메일 form에서 눌렀던 학생의 전화번호,이메일 등 더 줘야함.-->
+    <!-- localstroage는 clear()하면 비워짐. -->
     <div id="list">
       <table>
         <thead>
@@ -123,12 +92,40 @@
             <th>학생번호</th>
             <th>이름</th>
             <th>점수</th>
-            <th>삭제</th>
+            <th>전화번호</th>
+            <th>이메일</th>
           </tr>
         </thead>
         <tbody id="studentList"></tbody>
       </table>
     </div>
-    <script src="js/addStudent.js"></script>
+    <div>
+      <a href="form.html">목록으로</a>
+    </div>
+    <script>
+      const sno = localStorage.getItem("sno");
+      const sname = localStorage.getItem("sname");
+      let students = JSON.parse(localStorage.getItem("students"));
+      let student = "";
+      students.forEach((ele) => {
+        if (ele.sno == sno && ele.sname == sname) {
+          student = ele;
+        }
+      });
+      function makeRow(inputs) {
+        let tr = document.createElement("tr");
+        inputs.forEach((elem) => {
+          let td = document.createElement("td");
+          let txt = document.createTextNode(elem);
+          td.appendChild(txt);
+          tr.appendChild(td);
+        });
+        return tr;
+      }
+      const inputs = [sno, sname, student.score, student.phone, student.email];
+      let tr = makeRow(inputs);
+
+      document.querySelector("#studentList").appendChild(tr);
+    </script>
   </body>
 </html>

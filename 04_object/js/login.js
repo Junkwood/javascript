@@ -4,6 +4,45 @@ const db = [
   { usrerId: "user02", password: "2222" },
   { usrerId: "user03", password: "3333" },
 ];
+const students = [
+  {
+    sno: 100,
+    sname: "홍길동",
+    score: 90,
+    phone: "010-1111-1111",
+    email: "hong@email.com",
+  },
+  {
+    sno: 101,
+    sname: "이순신",
+    score: 95,
+    phone: "010-2222-2222",
+    email: "lee@email.com",
+  },
+  {
+    sno: 102,
+    sname: "유관순",
+    score: 98,
+    phone: "010-3333-3333",
+    email: "you@email.com",
+  },
+  {
+    sno: 103,
+    sname: "박병관",
+    score: 88,
+    phone: "010-4444-4444",
+    email: "park@email.com",
+  },
+  {
+    sno: 104,
+    sname: "김충식",
+    score: 77,
+    phone: "010-5555-5555",
+    email: "kinc@email.com",
+  },
+];
+
+// localStorage.setItem("students", JSON.stringify(students));
 
 // location.href = 'form.html';
 // location.reload();
@@ -39,6 +78,9 @@ form.addEventListener("submit", function (e) {
       isExist = true;
       if (elem.password == pw) {
         //비밀번호도 일치하면
+        if (!localStorage.getItem("students")) {
+          localStorage.setItem("students", JSON.stringify(students));
+        }
         location.href = "form.html"; //해당페이지로 이동
       } else {
         alert("비밀번호가 틀렸습니다. 다시 입력해주세요"); //아이디는 있지만 비번틀리면 알림.

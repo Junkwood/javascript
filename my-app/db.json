@@ -1,0 +1,19 @@
+{
+  "posts": [
+    {
+      "id": "1",
+      "title": "Hello, World",
+      "author": "Hong"
+    },
+    {
+      "id": "2",
+      "title": "Good Morning",
+      "author": "Park"
+    },
+    {
+      "id": "3",
+      "title": "data sample",
+      "author": "user01"
+    }
+  ]
+}
