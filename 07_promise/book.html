@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>도서 관리 시스템</title>
+    <link rel="stylesheet" href="css/book.css" />
+  </head>
+  <body>
+    <div class="container">
+      <h1>📚 도서 관리 시스템</h1>
+
+      <!-- 등록 폼 -->
+      <div class="register">
+        <form name="addBook">
+          <label
+            >도서번호<input type="text" name="bookNo" placeholder="예: 001"
+          /></label>
+          <label
+            >도서명<input
+              type="text"
+              name="title"
+              placeholder="예: 자바스크립트 핵심가이드"
+          /></label>
+          <label
+            >저자<input
+              type="text"
+              name="author"
+              placeholder="예: 알베르토 몬탈레시"
+          /></label>
+          <label
+            >가격<input type="number" name="price" placeholder="예: 19800"
+          /></label>
+          <button type="submit">저장</button>
+        </form>
+      </div>
+
+      <!-- 도서 목록 -->
+      <h3>도서목록</h3>
+      <table>
+        <thead>
+          <tr>
+            <th><input type="checkbox" /></th>
+            <th>도서번호</th>
+            <th>도서명</th>
+            <th>저자</th>
+            <th>가격</th>
+          </tr>
+        </thead>
+        <tbody id="list"></tbody>
+      </table>
+    </div>
+
+    <script src="js/book.js"></script>
+  </body>
+</html>

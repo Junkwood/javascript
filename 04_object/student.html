@@ -106,7 +106,7 @@
       const sno = localStorage.getItem("sno");
       const sname = localStorage.getItem("sname");
       let students = JSON.parse(localStorage.getItem("students"));
-      let student = "";
+      let student;
       students.forEach((ele) => {
         if (ele.sno == sno && ele.sname == sname) {
           student = ele;

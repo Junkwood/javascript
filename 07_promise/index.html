@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Promise</title>
+    <style>
+      /* 전체 레이아웃 */
+      body {
+        font-family: "Noto Sans KR", sans-serif;
+        background-color: #f4f6fa;
+        color: #333;
+        margin: 0;
+        padding: 30px;
+      }
+
+      /* 제목 */
+      h3 {
+        text-align: center;
+        color: #444;
+        font-weight: 600;
+        margin-bottom: 20px;
+      }
+
+      /* 게시글 목록 영역 */
+      div {
+        max-width: 600px;
+        margin: 0 auto;
+        background: #fff;
+        border-radius: 10px;
+        box-shadow: 0 4px 15px rgba(0, 0, 0, 0.08);
+        padding: 20px 25px;
+      }
+
+      /* "게시글목록" 문구 */
+      div > p {
+        font-weight: bold;
+        margin-bottom: 10px;
+        border-bottom: 2px solid #6c63ff;
+        padding-bottom: 5px;
+        color: #6c63ff;
+      }
+
+      /* 리스트 스타일 */
+      #list {
+        list-style: none;
+        padding: 0;
+        margin: 0;
+      }
+
+      #list > li {
+        display: grid;
+        grid-template-columns: 80px 1fr 120px 80px;
+        align-items: center;
+        padding: 10px 0;
+        border-bottom: 1px solid #e3e3e3;
+      }
+
+      #list > li:first-child {
+        font-weight: bold;
+        background-color: #f0f2f9;
+        border-radius: 5px;
+        margin-bottom: 5px;
+      }
+
+      /* 항목 간격 */
+      #list span {
+        display: inline-block;
+        text-align: center;
+        font-size: 15px;
+      }
+
+      /* 삭제 버튼 스타일 */
+      .delbtn {
+        background-color: #ff5c5c;
+        border: none;
+        color: white;
+        padding: 6px 10px;
+        border-radius: 6px;
+        cursor: pointer;
+        transition: 0.2s ease;
+        font-size: 13px;
+      }
+
+      #list button:hover {
+        background-color: #e74c3c;
+        transform: scale(1.05);
+      }
+
+      /* 반응형 */
+      @media (max-width: 500px) {
+        #list > li {
+          grid-template-columns: 60px 1fr 80px 70px;
+          font-size: 14px;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <h3>Promise</h3>
+    <div>
+      <p>게시글목록</p>
+      <ul id="list">
+        <li>
+          <span>글번호</span>
+          <span> 제목</span>
+          <span>작성자</span>
+          <span>삭제</span>
+        </li>
+      </ul>
+    </div>
+    <script src="js/promise3.js"></script>
+  </body>
+</html>

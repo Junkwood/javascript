@@ -15,5 +15,17 @@
       "title": "data sample",
       "author": "user01"
     }
+  ],
+  "comments": [
+    {
+      "id": "1",
+      "comment": "sample content",
+      "postId": "1"
+    },
+    {
+      "id": "2",
+      "comment": "sample content2",
+      "postId": null
+    }
   ]
 }
