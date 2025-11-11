@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <div id="user">
+      Text: <input type="text" name="search" />
+      <button>지우기</button>
+      <span class="remaining"></span><span style="color: blue">초</span>
+    </div>
+    <div id="container">
+      <span>Lorem</span><span>ipsum</span><span>dolor</span><span>sit</span
+      ><span>amet,</span><span>consectetur</span><span>adipisicing</span
+      ><span>elit.</span><span>Cupiditate</span><span>nobis</span
+      ><span>dolorem</span><span>culpa!</span><span>Velit</span
+      ><span>voluptates</span><span>explicabo</span><span>illo</span
+      ><span>voluptas</span><span>ipsum,</span><span>ipsam</span
+      ><span>asperiores</span><span>minima</span><span>voluptatem</span
+      ><span>inventore</span><span>quae</span><span>laboriosam</span
+      ><span>aliquam!</span><span>Earum</span><span>libero</span
+      ><span>consequatur</span><span>similique.</span>
+    </div>
+    <script>
+      // 화면에 있는 글들을 찾아서 지우기.
+      document.querySelector("button").addEventListener("click", () => {
+        eraseWord();
+      });
+      document.querySelector("#user input").addEventListener("change", () => {
+        eraseWord();
+      });
+      function eraseWord() {
+        let words = document.querySelectorAll("#container span");
+        let input = document.querySelector("#user input");
+        words.forEach((elem) => {
+          // elem.remove();
+          if (elem.innerText == input.value) {
+            elem.remove();
+          }
+        });
+        console.log(document.querySelectorAll("#container span").length);
+        if (document.querySelectorAll("#container span").length == 0) {
+          alert("성공!");
+        }
+        input.value = "";
+      }
+      // 타이머
+      let remainSec = 60; //초기값
+      //1초마다 반복처리
+      let timeLap = setInterval(() => {
+        document.querySelector("span.remaining").textContent = remainSec--;
+        let words = document.querySelectorAll("#container span");
+        if (words.length == 0) {
+          clearInterval(timeLap); //setInterval 작업 취소.
+        }
+        if (remainSec < 0) {
+          clearInterval(timeLap); //setInterval 작업 취소.
+          if (words.length != 0) {
+            alert("실패!");
+          }
+        }
+      }, 1000);
+    </script>
+  </body>
+</html>

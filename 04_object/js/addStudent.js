@@ -9,6 +9,7 @@ students.forEach((elem) => {
 
 document.querySelector("#addForm").addEventListener("submit", (e) => {
   e.preventDefault(); //form의 기본기능을 차단함.
+  console.log(e.target);
   const sno = e.target.children[0].value;
   const sname = e.target.children[1].value;
   const score = e.target.children[2].value;

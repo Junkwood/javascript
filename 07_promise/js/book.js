@@ -12,6 +12,24 @@ const bookList = [
     author: "알베르토",
     price: 22000,
   },
+  {
+    bookNo: "003",
+    title: "이것이 자바다",
+    author: "김자바",
+    price: 30000,
+  },
+  {
+    bookNo: "004",
+    title: "저것도 자바다",
+    author: "박자바",
+    price: 18000,
+  },
+  {
+    bookNo: "005",
+    title: "이건 자바스크립트다",
+    author: "박스크립트",
+    price: 25000,
+  },
 ];
 //페이지 로딩시 바로 실행.
 function showBookList() {
@@ -47,15 +65,61 @@ document
     document.querySelector('input[name="author"]').value = "";
     document.querySelector('input[name="price"]').value = "";
   });
+
+//첫번째 체크박스 클릭시 전체 체크박스 상태 변경 이벤트 등록
 document
-  .querySelectorAll('input[type="checkbox"]')[0]
+  .querySelector('thead input[type="checkbox"]')
   .addEventListener("click", (e) => {
-    let checkboxes = document.querySelectorAll('input[type="checkbox"]');
+    let checkboxes = document.querySelectorAll('tbody input[type="checkbox"]');
     checkboxes.forEach((elem) => {
       if (e.target.checked == true) {
         elem.checked = true;
       } else {
         elem.checked = false;
+      }
+    });
+  });
+
+//tbody 체크상태에 따라 thead 체크여부 넣기.
+let checks = document.querySelectorAll('tbody input[type="checkbox"]');
+checks.forEach((elem) => {
+  elem.addEventListener("change", (e) => {
+    let headcheck = document.querySelector('thead input[type="checkbox"]');
+    let cnt = 0; //체크된거 카운팅용
+    for (let check of checks) {
+      if (check.checked == true) {
+        cnt++;
+      }
+    }
+    if (cnt == checks.length) {
+      headcheck.checked = true;
+    } else {
+      headcheck.checked = false;
+    }
+    // if (e.target.checked == false && headcheck.checked == true) {
+    //   headcheck.checked = false;
+    // } else if (e.target.checked == true && headcheck.checked == false) {
+    //   let checked = true;
+    //   for (let check of checks) {
+    //     if (check.checked == false) {
+    //       checked = false;
+    //       return;
+    //     }
+    //   }
+    //   if (checked == true) {
+    //     headcheck.checked = true;
+    //   }
+    // }
+  });
+});
+//선택삭제 이벤트.
+document
+  .querySelector('form button[type="button"]')
+  .addEventListener("click", () => {
+    let checkboxes = document.querySelectorAll('tbody input[type="checkbox"]');
+    checkboxes.forEach((elem) => {
+      if (elem.checked == true) {
+        elem.parentElement.parentElement.remove();
       }
     });
   });

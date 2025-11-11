@@ -1,0 +1,70 @@
+/* CSS */
+:root {
+  --outer-bg: #fff9c4; /* 연한 노란(원하면 더 진하게 변경) */
+  --item-bg: #fff; /* 각 작은 박스 배경 */
+  --item-border: rgba(0, 0, 0, 0.08);
+  --gap: 8px;
+  --pad: 16px;
+  --radius: 8px;
+  --item-radius: 6px;
+}
+
+#user {
+  background-color: #fff9c4;
+}
+#user button {
+  padding: 5px;
+}
+#user input {
+  padding: 5px 5px;
+}
+
+#container {
+  box-sizing: border-box;
+  width: 100%;
+  max-width: 1000px; /* 필요하면 조정 */
+  margin: 24px auto;
+  padding: var(--pad);
+  background: var(--outer-bg);
+  border: 1px solid rgba(0, 0, 0, 0.06);
+  border-radius: var(--radius);
+  box-shadow: 0 6px 18px rgba(0, 0, 0, 0.03);
+  display: flex;
+  flex-wrap: wrap; /* 줄 바꿈 허용 */
+  gap: var(--gap); /* 아이템 사이 간격 */
+  align-items: center;
+}
+
+/* 각 span을 작은 박스로 보이게 */
+#container span {
+  display: inline-flex; /* 텍스트 중심 정렬을 위해 inline-flex 사용 */
+  align-items: center;
+  justify-content: center;
+  padding: 6px 10px; /* 박스 내부 여백 */
+  background: var(--item-bg);
+  border: 1px solid var(--item-border);
+  border-radius: var(--item-radius);
+  font-size: 14px;
+  line-height: 1;
+  white-space: nowrap; /* 줄바꿈 대신 박스 단위로 배치 */
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.03);
+}
+
+/* 선택적: hover 효과와 모바일에서의 글줄 길이 제한 */
+#container span:hover {
+  transform: translateY(-3px);
+  transition: transform 120ms ease;
+}
+
+/* 모바일에서 너무 길면 줄 바꿈 허용하고 유동적으로 변화 */
+@media (max-width: 360px) {
+  #container span {
+    white-space: normal;
+    padding: 6px 8px;
+    font-size: 13px;
+  }
+}
+
+.remaining {
+  color: red;
+}
