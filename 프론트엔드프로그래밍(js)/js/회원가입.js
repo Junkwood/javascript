@@ -8,6 +8,7 @@ form.addEventListener("submit", (e) => {
   //d아이디 길이 체크
   console.log(id.length);
   if (id.length < 4 || id.length > 15) {
+    //
     alert("아이디의 길이는 4~15자리입니다. 다시 입력해주세요.");
     e.target[0].focus();
     return;

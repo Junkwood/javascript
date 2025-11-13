@@ -1,153 +1,229 @@
-/* 전체 레이아웃 */
-body {
-  font-family: "Pretendard", "Noto Sans KR", sans-serif;
-  background: #f8f9fb;
-  color: #333;
+/* css/book.css */
+@import url("https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@400;500;700&display=swap");
+
+* {
   margin: 0;
-  padding: 40px;
+  padding: 0;
+  box-sizing: border-box;
 }
 
-/* 메인 컨테이너 */
+body {
+  font-family: "Noto Sans KR", sans-serif;
+  background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+  color: #333;
+  min-height: 100vh;
+  padding: 20px;
+}
+
 .container {
-  max-width: 800px;
+  max-width: 900px;
   margin: 0 auto;
-  background: #fff;
-  border-radius: 12px;
-  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.08);
-  padding: 30px 40px;
+  background: #ffffff;
+  border-radius: 16px;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+  overflow: hidden;
 }
 
-/* 제목 */
 h1 {
+  background: linear-gradient(90deg, #6a11cb 0%, #2575fc 100%);
+  color: white;
   text-align: center;
-  font-size: 28px;
-  margin-bottom: 30px;
-  color: #3f51b5;
+  padding: 1.5rem;
+  font-size: 1.8rem;
+  margin: 0;
+  font-weight: 700;
 }
 
-/* 등록 폼 */
+.register {
+  padding: 2rem;
+  background: #f8f9fa;
+  border-bottom: 1px solid #e9ecef;
+}
+
 .register form {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 15px 20px;
-  margin-bottom: 10px;
+  display: grid;
+  grid-template-columns: 100px 1fr;
+  gap: 0.8rem 1rem;
   align-items: center;
 }
 
-/* label 스타일 */
 .register label {
-  width: 100px;
   font-weight: 600;
-  color: #444;
+  color: #495057;
+  text-align: right;
 }
 
-/* input 스타일 */
 .register input {
-  flex: 1;
-  min-width: 200px;
-  padding: 8px 10px;
-  border: 1px solid #ccc;
-  border-radius: 6px;
-  transition: border 0.2s;
+  padding: 0.75rem 1rem;
+  border: 2px solid #dee2e6;
+  border-radius: 8px;
+  font-size: 1rem;
+  transition: all 0.2s ease;
 }
 
-/* input 포커스 시 */
 .register input:focus {
   outline: none;
-  border-color: #3f51b5;
-  box-shadow: 0 0 4px rgba(63, 81, 181, 0.2);
+  border-color: #2575fc;
+  box-shadow: 0 0 0 3px rgba(37, 117, 252, 0.2);
 }
 
-/* 버튼 그룹: 입력폼 아래 가로 배치 */
-.register .button-group {
+.button-group {
+  grid-column: 1 / -1;
   display: flex;
-  gap: 15px;
-  width: 100%;
-  margin-top: 20px;
-  justify-content: space-between; /* 양쪽정렬 */
+  gap: 1rem;
+  justify-content: center;
+  margin-top: 1rem;
 }
 
-/* 버튼 공통 스타일 */
-.register button {
-  flex: none;
-  padding: 10px 25px;
+.button-group button {
+  padding: 0.75rem 2rem;
+  font-size: 1rem;
+  font-weight: 600;
   border: none;
-  border-radius: 6px;
-  font-size: 16px;
+  border-radius: 8px;
   cursor: pointer;
-  transition: background 0.3s;
+  transition: all 0.3s ease;
 }
 
-/* 저장 버튼 */
-.register button[type="submit"] {
-  background-color: #3f51b5;
-  color: #fff;
+.button-group button[type="submit"] {
+  background: #2575fc;
+  color: white;
 }
 
-.register button[type="submit"]:hover {
-  background-color: #303f9f;
+.button-group button[type="submit"]:hover {
+  background: #1a5bb8;
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(37, 117, 252, 0.3);
 }
 
-/* 선택 삭제 버튼 */
-.register button[type="button"] {
-  background-color: #f44336;
-  color: #fff;
+.button-group button[type="button"] {
+  background: #e63946;
+  color: white;
 }
 
-.register button[type="button"]:hover {
-  background-color: #d32f2f;
+.button-group button[type="button"]:hover {
+  background: #c1121f;
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(230, 57, 70, 0.3);
 }
 
-/* 도서 목록 제목 */
+/* 도서 목록 */
 h3 {
-  margin-top: 20px;
-  border-bottom: 2px solid #3f51b5;
-  padding-bottom: 5px;
-  color: #3f51b5;
+  padding: 1.5rem 2rem 1rem;
+  font-size: 1.4rem;
+  color: #2c3e50;
+  font-weight: 600;
 }
 
-/* 테이블 스타일 */
 table {
   width: 100%;
   border-collapse: collapse;
-  margin-top: 10px;
+  margin: 0 2rem 2rem;
 }
 
-th,
-td {
-  text-align: center;
-  padding: 10px 8px;
-  border-bottom: 1px solid #ddd;
+thead {
+  background: #f1f3f5;
 }
 
-th {
-  background-color: #f1f3f8;
-  color: #333;
+thead th {
+  padding: 1rem;
+  text-align: left;
+  font-weight: 600;
+  color: #495057;
+  font-size: 0.95rem;
 }
 
-tr:hover {
-  background-color: #f9f9ff;
+thead th:first-child {
+  width: 50px;
 }
 
-/* 체크박스 스타일 */
-input[type="checkbox"] {
-  width: 18px;
-  height: 18px;
+tbody tr {
+  transition: background 0.2s ease;
+}
+
+tbody tr:nth-child(even) {
+  background: #f8f9fa;
+}
+
+tbody tr:hover {
+  background: #e3f2fd;
+  transform: scale(1.005);
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+}
+
+tbody td {
+  padding: 1rem;
+  border-bottom: 1px solid #e9ecef;
+  font-size: 0.95rem;
+}
+
+tbody td input[type="checkbox"] {
+  transform: scale(1.2);
   cursor: pointer;
 }
 
-/* 반응형: 모바일에서 입력필드 한 줄로, 버튼 세로 배치 */
-@media (max-width: 600px) {
+/* 반응형 */
+@media (max-width: 768px) {
+  .register form {
+    grid-template-columns: 1fr;
+    gap: 0.6rem;
+  }
+
   .register label {
-    width: 100%;
+    text-align: left;
+    font-weight: 500;
   }
 
-  .register input {
-    width: 100%;
-  }
-
-  .register .button-group {
+  .button-group {
     flex-direction: column;
-    gap: 10px;
+  }
+
+  table,
+  thead,
+  tbody,
+  th,
+  td,
+  tr {
+    display: block;
+  }
+
+  thead tr {
+    position: absolute;
+    top: -9999px;
+    left: -9999px;
+  }
+
+  tr {
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    margin-bottom: 1rem;
+    padding: 1rem;
+    background: white;
+  }
+
+  td {
+    border: none;
+    position: relative;
+    padding-left: 50%;
+    text-align: right;
+  }
+
+  td::before {
+    content: attr(data-label);
+    position: absolute;
+    left: 1rem;
+    width: 45%;
+    font-weight: 600;
+    color: #555;
+    text-align: left;
+  }
+
+  td:first-child {
+    padding-left: 1rem;
+    text-align: left;
+  }
+
+  td:first-child::before {
+    content: "";
   }
 }
